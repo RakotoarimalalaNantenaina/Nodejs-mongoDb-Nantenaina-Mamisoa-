@@ -54,11 +54,17 @@ exports.findOne = (req, res) => {
 
     Eleve.findById(req.params.id)
         .then(eleve => {
-            Prof.find({ classeoccupe: eleve.classe.classe1 })
+            Prof.find()
                 .then(prof => {
                     var tab = []
                     tab.push(eleve)
-                    tab.push(prof)
+                   
+                    for (let i = 0; i < prof.length; i++) {
+                        if(prof[i].classeoccupe.classe1 == eleve.classe || prof[i].classeoccupe.classe2 == eleve.classe){
+                            tab.push(prof[i])
+                        }
+                        
+                    }
                     res.send(tab)
                 })
             if (!eleve) {
