@@ -41,13 +41,13 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Prof.find()
-    .then(notes => {
-        res.send(notes);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+        .then(notes => {
+            res.send(notes);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving notes."
+            });
         });
-    });
 };
 
 exports.findOne = (req, res) => {
