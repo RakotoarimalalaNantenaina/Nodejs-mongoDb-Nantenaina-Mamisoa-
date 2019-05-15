@@ -58,12 +58,10 @@ exports.findOne = (req, res) => {
                 .then(prof => {
                     var tab = []
                     tab.push(eleve)
-                   
                     for (let i = 0; i < prof.length; i++) {
                         if(prof[i].classeoccupe.classe1 == eleve.classe || prof[i].classeoccupe.classe2 == eleve.classe){
                             tab.push(prof[i])
-                        }
-                        
+                        } 
                     }
                     res.send(tab)
                 })
